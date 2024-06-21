@@ -1,19 +1,21 @@
 import sys
 from datetime import datetime
 from datetime import timedelta
-# Iterate over each line provided through standard input
+
+print(datetime.now() + timedelta(days=1))
+print(datetime.now() + timedelta(seconds=60))
+print(datetime.now() + timedelta(days=365 * 2))
+
 for line in sys.stdin:
-    # Strip leading/trailing whitespace and split the line into a list based on tab delimiter
     data = line.strip().split("\t")
-
-    # Check if the split list has exactly six elements
-    if len(data) ==6:
-        # Unpack the list into variables
+    if len(data) == 6:
         date, time, store, item, cost, payment = data
+        print('{0}\t{1}'.format(item, cost))
 
-        # Get the current time
-        now = datetime.now()
-        current_time = now.strftime("%Y-%m-%d %H:%M:%S")
+delta = timedelta(days=100, hours=10, minutes=13)
+print(delta)
 
-        # Print the item and cost, along with the current time
-        print(f"{item}\t{cost}\t{current_time}")
+
+def process_measurement(feet, inches):
+    current_time = datetime.now()
+    print("Feet: {0}, Inches: {1}, Time: {2}".format(feet, inches, current_time))
