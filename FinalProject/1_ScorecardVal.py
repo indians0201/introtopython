@@ -41,7 +41,7 @@ class ScorecardValuation:
         return self.checksize * (total_score / 30)
 
 
-# Example use, set score equal to the main class name, so then you calculate the main class inputs
+# Prints and Usage
 scorecard = ScorecardValuation()
 valuation = scorecard.calculate_valuation()
 profit = scorecard.calculate_profit()
