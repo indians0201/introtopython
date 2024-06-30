@@ -1,12 +1,11 @@
 class ScorecardValuation:
     def __init__(self):
-        self.average_investment = self.get_positive_float("Enter the average angel investment: ")
-        self.management = self.get_score("Enter the score for the management team (0-10): ")
-        self.opportunity = self.get_score("Enter the score for the size of the opportunity (0-10): ")
-        self.product = self.get_score("Enter the score for the product/technology (0-10): ")
-        self.competition = self.get_score("Enter the score for the competitive environment (0-10): ")
-        self.other = self.get_score("Enter the score for other factors (0-10): ")
+        self.checksize = self.get_positive_float("Avg Expected Check Size: $ ")
+        self.mgmt = self.get_score("Management (0-10): ")
+        self.escale = self.get_score("Entrance + Scale (0-10): ")
+        self.prfcon = self.get_score("Proof of Concept (0-10): ")
 
+    # positive values and number values, data checker.
     def get_positive_float(self, prompt):
         while True:
             try:
@@ -18,6 +17,7 @@ class ScorecardValuation:
             except ValueError:
                 print("Invalid input. Please enter a number.")
 
+    # user input prompt of  a  number between 0 and 10
     def get_score(self, prompt):
         while True:
             try:
@@ -29,11 +29,21 @@ class ScorecardValuation:
             except ValueError:
                 print("Invalid input. Please enter a number.")
 
+    # Creates valuation based off inputs. Takes total score/total possible score
     def calculate_valuation(self):
-        total_score = self.management + self.opportunity + self.product + self.competition + self.other
-        return self.average_investment * (total_score / 50)
+        total_score = self.mgmt + self.prfcon + self.escale
+        print(f"Scorecard Total: {total_score}\n")
+        return self.checksize * (1 + (total_score / 30))
 
-# Example usage:
+    # Added calc profit to show the profit isolated from the principal
+    def calculate_profit(self):
+        total_score = self.mgmt + self.prfcon + self.escale
+        return self.checksize * (total_score / 30)
+
+
+# Example use, set score equal to the main class name, so then you calculate the main class inputs
 scorecard = ScorecardValuation()
 valuation = scorecard.calculate_valuation()
-print(f"The valuation of the oncology research startup is: ${valuation}")
+profit = scorecard.calculate_profit()
+print(f"Valuation: ${valuation}")
+print(f"Potential Profit: ${profit}")
