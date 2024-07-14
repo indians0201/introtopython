@@ -1,11 +1,9 @@
 import numpy as np
 
-
 # Program will take inputs from user for check size and 3 categories they must rate 1-10.
 # Final Output will be expected profit and total valuation. Profit is calculated using the user inputs.
-#The total score of categorical data is 30
-#The final score is added to 1 and multiplied by the initial check size
-
+# The total score of categorical data is 30.
+# The final score is added to 1 and multiplied by the initial check size.
 
 class ScorecardValuation:
     def __init__(self):
@@ -56,6 +54,6 @@ class ScorecardValuation:
 scorecard = ScorecardValuation()
 valuation = scorecard.calculate_valuation()
 profit = scorecard.calculate_profit()
-#Prints the Valuation and the Potential Profit, the value is rounded two sig figs
-print(f"Valuation: ${valuation}")
-print(f"Potential Profit: ${profit}")
+# Prints the Valuation and the Potential Profit, the value is rounded to two significant figures
+print(f"Valuation: ${valuation:.2f}")
+print(f"Potential Profit: ${profit:.2f}")
